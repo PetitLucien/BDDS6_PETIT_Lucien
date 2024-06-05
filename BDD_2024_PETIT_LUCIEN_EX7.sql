@@ -9,7 +9,7 @@ SELECT ID_eqp FROM materiel WHERE ID_eqp NOT IN (SELECT ID_eqp FROM reservation)
 
 -- Afficher les équipements ayant été emprunté plus de 3 fois
  
-SELECT ID_eqp FROM materiel INNER JOIN reservation USING (ID_eqp) 
+SELECT ID_eqp, COUNT(*) as NB_emprunt FROM materiel INNER JOIN reservation USING (ID_eqp) 
 GROUP BY ID_eqp HAVING COUNT(*)>3;
 
 -- Afficher le nombre d’emprunt pour chaque utilisateur
